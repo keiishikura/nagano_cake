@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
     
   namespace :admin do
-    resources :genres, only: [:index, :create, :edit]
+    resources :genres,only:[:index, :create, :edit]
+    resources :items,only:[:new, :index, :show, :edit]
   end
   
   devise_for :customers,skip: [:passwords], controllers: {

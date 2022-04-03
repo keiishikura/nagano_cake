@@ -9,5 +9,29 @@
     <p>支払方法:<%= @orer.payment_method %></p>
     <p>注文ステータス:<%= @order.status %></p>
   
-    
+   <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+            <th colspan="6"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= @order.item.name %></td>
+            <td><%= @order.item.price %></td>
+            <td><%= @order.amount %></td>
+            <td><%= customer.is_active %></td>            
+            <td><%= @order.making_status %></td>
+            <td><%= link_to "更新" ,admin_order_path(@oroder.id) %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>  
 </body>

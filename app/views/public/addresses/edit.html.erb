@@ -1,0 +1,37 @@
+<div class="container mx-auto" style="width: 1200px; height: 600px;">
+    <h4 class="row bg-light" style="width: 130px">発送先編集</h4>
+      <%= form_with model: @address,url:address_path(@address.id),method: :patch do |f|%>
+
+        <div class="row mb-3">
+          <div class="col-4">
+          郵便番号(ハイフンなし)
+          </div>
+          <div>
+          <%= f.text_field :postal_code %>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-4">
+          住所
+          </div>
+          <div>
+          <%= f.text_field :address,size:60 %>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-4">
+          宛名
+          </div>
+          <div>
+          <%= f.text_field :name %>
+          </div>
+          <div class="col ml-5">
+          <div class="text-right">
+          <%= f.submit "変更内容を保存",class:"btn btn-success" %>
+          </div>
+          </div>
+        </div>
+      <% end %>
+</div>

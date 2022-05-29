@@ -1,16 +1,68 @@
-<body>
-  <h1>商品詳細</h1>
-    <% if @item.image.attached? %>
-    <%= image_tag @item.image, size: "200x200" %>
-    <% else %>
-    <%= image_tag 'no_image', size: "200x200" %>
-    <% end %>
+<div class="container mx-auto" style="width: 900px; height: 600px;">
+  <h4 class="form-group row bg-light" style="width: 100px">商品詳細</h4>
+    <div>
+        <div class="form-group row">
+          <div class="col-4">
+          <% if @item.image.attached? %>
+          <%= image_tag @item.image, size: "250x200" %>
+          <% else %>
+          <%= image_tag 'no_image', size: "250x200" %>
+          <% end %>
+          </div>
 
-    <p>商品名:<%= @item.name %></p>
-    <p>商品説明:<%= @item.introduction %></p>
-    <p>ジャンル:<%= @item.genre_id %></p>
-    <p>税込価格:<%= @item.price %></p>
-    <p>販売ステータス:<%= @item.is_active %></p>
+      <div class="col-8 col-form-label">
+        <div class="form-group row">
+          <div class="col-3">
+            商品名
+          </div>
+          <div class="col-5">
+            <%= @item.name %>
+          </div>
+        </div>
 
-  <%= link_to "編集する" ,edit_admin_item_path(@item.id) %>
-</body>
+        <div class="form-group row">
+          <div class="col-3">
+            商品説明
+          </div>
+          <div class="col-5">
+            <%= @item.introduction %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3">
+            ジャンル
+          </div>
+          <div class="col-5">
+            <%= @item.genre.name %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3">
+            販売価格
+          </div>
+          <div class="col-5">
+            <%= @item.price %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-3">
+            販売ステータス
+          </div>
+          <div class="col-5">
+          <% if @item.is_active == true %>
+          販売中
+          <% else %>
+          販売停止中
+          <% end %>
+          </div>
+        </div>
+
+          <div class="col-7 mx-auto">
+          <%= link_to "編集する" ,edit_admin_item_path(@item.id),class:"btn btn-success" %>
+          </div>
+        </div>
+    </div>
+</div>

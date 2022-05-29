@@ -1,0 +1,64 @@
+  <div class="container mx-auto" style="width: 900px;">
+    <h4 class="row bg-light" style="width: 160px">注文履歴詳細</h4>
+
+    <div class="row mb-5">
+      <div class="col">
+      <h6>注文情報</h6>
+      <table class="table table-bordered">
+      　<thead class="thead-light">
+        　<tr>
+          　<th scope="col">注文日</th><td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+          </tr>
+          <tr>
+          　<th scope="col">配送先</th><td><%= @order.address %></td>
+          </tr>
+          <tr>
+          　<th scope="col">支払方法</th><td><%= @order.payment_method_i18n %></td>
+          </tr>
+          <tr>
+          　<th scope="col">ステータス</th><td><%= @order.status_i18n %></td>
+          </tr>
+      　</thead>
+      </table>
+      </div>
+
+      <div class="col">
+      <h6>請求情報</h6>
+      <table class="table table-bordered">
+      　<thead class="thead-light">
+        　<tr>
+          　<th scope="col">商品合計</th><td><%= @order.total_payment %></td>
+          </tr>
+          <tr>
+          　<th scope="col">配送料</th><td><%= @order.shipping_cost %></td>
+          </tr>
+          <tr>
+          　<th scope="col">ご請求額</th><td><%= @order.total_payment %></td>
+          </tr>
+      　</thead>
+      </table>
+      </div>
+    </div>
+
+    <h6>注文内容</h6>
+      <table class="table table-bordered">
+      　<thead class="thead-light" style="width: 500px">
+        　<tr>
+          　<th scope="col">商品</th>
+          　<th scope="col">単価(税込)</th>
+          　<th scope="col">個数</th>
+          　<th scope="col">小計</th>
+        　</tr>
+      　</thead>
+      　<tbody>
+        <% @order.order_details.each do |order_detail| %>
+        　<tr>
+          　<td><%= order_detail.item.name %></td>
+　        　<td><%= order_detail.item.price %></td>
+            <td><%= order_detail.amount %></td>
+　        　<td><%= (order_detail.item.price)*(order_detail.amount) %></td>
+        　</tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

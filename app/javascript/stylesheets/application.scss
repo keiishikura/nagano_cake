@@ -1,0 +1,96 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+/*top*/
+.top {
+  margin: 50px auto;
+  text-align: center;
+  border: 1px solid;
+  padding: 50px;
+}
+
+/*about*/
+.content {
+  margin: 30px auto;
+  text-align: center;
+  height: 500px;
+}
+
+.contents {
+  width: 80%;
+  height: 300px;
+  margin: 200px auto;
+}
+
+h4 {
+  margin: 30px auto;
+  text-align: center;
+}
+
+.box {
+  margin: 0px auto;
+  text-align: center;
+}
+
+.boxes {
+  display: flex;
+  margin: 0px 35%;
+}
+
+.item {
+  margin: 10px auto;
+  width: 150px;
+}
+
+.complete-content {
+  margin: 150px auto;
+  height: 350px;
+}
+
+.complete {
+  font-size: 40px;
+  text-align: center;
+}
+
+/*新規会員登録*/
+.registration-name {
+  width: 305px;
+}
+
+.registration-name-sei {
+  width: 240px;
+}
+
+.registration-name-kana {
+  width: 290px;
+}
+
+.registration {
+  width: 350px;
+}
+
+.submit {
+  margin: 30px auto;
+}
+
+/*顧客ログイン*/
+.log-in {
+  margin: 30px auto;
+}
+
+.log-in-content {
+  width: 350px;
+}
+
+/*配送先登録*/
+.address-content {
+  width: 300;
+}
+
+.true {
+  color: green;
+}
+
+.false {
+  color: lightslategray;
+}

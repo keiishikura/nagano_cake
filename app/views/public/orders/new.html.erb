@@ -1,0 +1,77 @@
+<div class="container mx-auto m-3" style="width: 900px;">
+  <div class="col-12 mx-auto">
+    <h4 class="form-group row bg-light" style="width: 150px">注文情報入力</h4>
+
+      <%= form_with model: @order, url: confirm_path do |f| %>
+          <div class="row mb-2">
+          支払方法
+          </div>
+          <div class="row mx-auto">
+          <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+          <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+          </div>
+          <div class="row mx-auto mb-3">
+          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+          </div>
+
+          <div class="row mb-2">
+          お届け先
+          </div>
+          <div class="row mx-auto">
+          <%= f.radio_button :address_method, 0, checked: "checked" %>
+          <%= f.label :address_method, "ご自身の住所" %>
+          </div>
+          <div class="row ml-4 mb-3">
+          <%= current_customer.postal_code %><%= current_customer.address %></br>
+          <%= current_customer.last_name %><%= current_customer.first_name %>
+          </div>
+
+          <div class="row mx-auto">
+          <%= f.radio_button :address_method, 1, checked: "checked" %>
+          <%= f.label :address_method, "登録住所から選択" %>
+          </div>
+          <div class="row ml-4 mb-3">
+          <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
+          </div>
+
+          <div class="row mx-auto">
+          <%= f.radio_button :address_method, 2, checked: "checked" %>
+          <%= f.label :address_method, "新しいお届け先" %>
+          </div>
+
+          <div class="row mx-auto mb-1">
+            <div class="col-3 ml-4">
+            郵便番号(ハイフンなし)
+            </div>
+            <div class="col-8">
+            <%= f.text_field :postal_code %>
+            </div>
+          </div>
+
+          <div class="row mx-auto mb-1">
+            <div class="col-3 ml-4">
+            住所
+            </div>
+            <div class="col-8">
+            <%= f.text_field :address,size:60 %>
+            </div>
+          </div>
+
+          <div class="row mx-auto mb-3">
+            <div class="col-3 ml-4">
+            宛名
+            </div>
+            <div class="col-8">
+            <%= f.text_field :name %>
+            </div>
+          </div>
+
+        <div class="form-group row">
+          <div class="col-2 mx-auto" style="width: 900px">
+          <%= f.submit "確認画面へ進む",class:"btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>

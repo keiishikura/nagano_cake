@@ -1,0 +1,80 @@
+<div class="container mx-auto" style="width: 900px; height: 500px;">
+  <h4 class="form-group row bg-light" style="width: 150px">会員情報編集</h4>
+    <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+
+      <div class="form-group row">
+        <div class="registration-name">
+        名前
+        </div>
+        <div class="registration-name-sei">
+      　(姓)<%= f.text_field :last_name %>
+      　</div>
+        <div class>
+      　(名)<%= f.text_field :first_name %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+       <div class="registration-name-kana">
+        フリガナ
+        </div>
+        <div class>
+      　(セイ)<%= f.text_field :last_name_kana %>
+        </div>
+        <div class>
+      　(メイ)<%= f.text_field :first_name_kana %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="registration">
+        郵便番号
+        </div>
+        <div class>
+        <%= f.text_field :postal_code %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="registration">
+        住所
+        </div>
+        <div class>
+        <%= f.text_field :address,size:49 %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="registration">
+        電話番号
+        </div>
+        <div class>
+        <%= f.text_field :telephone_number %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="registration">
+        メールアドレス
+        </div>
+        <div class>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      　</div>
+      </div>
+
+        <div class="row mt-3 " >
+          <div class="btn-group mx-auto">
+          <div class="col-2">
+          <%= f.submit "編集内容を保存",class:"btn btn-success", method: :patch %>
+          <% end %>
+          </div>
+          </div>
+          <div class="col-2">
+          <%= link_to "退会する" , confirm_unsubscribe_path ,class:"btn btn-danger" %>
+          </div>
+        </div>
+
+    </form>
+  </div>
+</div>
+
